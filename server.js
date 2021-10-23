@@ -13,7 +13,8 @@ app.get('/api/notes', (req, res) => {
 });
 
 app.get('/notes', (req, res)=> {
-    res.sendFile('notes.html')
+
+    res.sendFile(__dirname + '/public/notes.html')
 })
 
 app.get('*', (req, res)=> {
