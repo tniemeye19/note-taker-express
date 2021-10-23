@@ -1,1 +1,0 @@
-const notes = require('../../db/db.json');
