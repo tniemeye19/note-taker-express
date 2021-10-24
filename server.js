@@ -8,10 +8,11 @@ const PORT = process.env.PORT || 3001;
 
 const app = express();
 
-const rootDirectory = path.join(__dirname, 'public');
-
 // Allows use of files within 'public' directory that are mentioned
-app.use(express.static(rootDirectory));
+app.use(express.static('public'));
+
+app.use(express.urlencoded({ extended: true }));
+app.use(express.json());
 
 app.use('/api', apiRoutes);
 app.use('/', htmlRoutes);
