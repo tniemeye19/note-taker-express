@@ -1,5 +1,5 @@
 const { createNewNote, validateNote, deleteNote } = require('../../lib/notes');
-const { notes }  = require('../../db/db.json');
+let { notes }  = require('../../db/db.json');
 const router = require('express').Router();
 
 router.get('/notes', (req, res) => {
@@ -21,10 +21,11 @@ router.post('/notes', (req, res) => {
 
 router.delete('/notes/:id', (req, res) => {
     let singleNoteId = req.params.id;
-    console.log('Single Note Id', singleNoteId);
+    // console.log('Single Note Id', singleNoteId);
+    notes = notes.filter(note => note.id !== singleNoteId);
 
-    const filteredNotes = deleteNote(singleNoteId);
-    res.json(filteredNotes);
+    deleteNote(notes);
+    res.json(notes);
 
 });
 
