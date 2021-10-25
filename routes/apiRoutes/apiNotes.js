@@ -21,10 +21,9 @@ router.post('/notes', (req, res) => {
 
 router.delete('/notes/:id', (req, res) => {
     let singleNoteId = req.params.id;
+    console.log('Single Note Id', singleNoteId);
 
-    let filteredNotes = notes.filter(note => note.id !== singleNoteId);
-    
-    deleteNote(filteredNotes);
+    const filteredNotes = deleteNote(singleNoteId);
     res.json(filteredNotes);
 
 });
