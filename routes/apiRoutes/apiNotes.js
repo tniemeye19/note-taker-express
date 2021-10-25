@@ -22,7 +22,11 @@ router.post('/notes', (req, res) => {
 router.delete('/notes/:id', (req, res) => {
     let singleNoteId = req.params.id;
 
+    let filteredNotes = notes.filter(note => note.id !== singleNoteId);
     
+    deleteNote(filteredNotes);
+    res.json(filteredNotes);
+
 });
 
 module.exports = router;
